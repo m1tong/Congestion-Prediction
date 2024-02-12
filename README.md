@@ -1,15 +1,8 @@
 # DSC-Capstone-B07-Congestion-Prediction
 
 ## Description
-Welcome to the DSC180A Capstone Project: Graph ML for Chip Profiling. 
+Welcome to the DSC180A Capstone Project: Graph ML for Chip Profiling. This project is about the 
 
-## Project Website
-
-
-## Dataset Description
+## Table of Contents
 
 
-## Running the Project
-
-
-Thank you for visiting our repository!
