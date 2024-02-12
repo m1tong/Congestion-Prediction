@@ -6,9 +6,8 @@ from scipy.sparse import coo_matrix, save_npz
 
 data_path = 'NCSU-DigIC-GraphData-2023-07-25/'
 
-#Stores adjacency matrices and instances dataframe into arrays
+#Stores instances dataframe into arrays
 instdf = []
-adj = []
 
 def buildBST(array,start=0,finish=-1):
     if finish<0:
@@ -51,11 +50,6 @@ for i in range(1, 14):
     instances = pd.DataFrame(design['instances'])
     nets = pd.DataFrame(design['nets'])
 
-    conn=np.load(f"{data_path}xbar/{i}/xbar_connectivity.npz")
-    A = coo_matrix((conn['data'], (conn['row'], conn['col'])), shape=conn['shape'])
-    A = A.__mul__(A.T)
-    adj.append(A)
-
 
     congestion_data = np.load(f"{data_path}xbar/{i}/xbar_congestion.npz")
     xbst=buildBST(congestion_data['xBoundaryList'])
@@ -81,6 +75,7 @@ for i in range(1, 14):
     instances['routing_capacity'] = capacity
     instances['congestion'] = demand - capacity
     instdf.append(instances)
+    
 #Opens dataframe with information about each cell type's width and hiehght
 with gzip.open(data_path + 'cells.json.gz','rb') as f:
     cells = json.loads(f.read().decode('utf-8'))
@@ -98,7 +93,3 @@ for i, df in enumerate(newinsdf, start=1):
     filename = f"new_instances_{i}.csv"
     df.to_csv(filename, index=False)
 
-#Saves each adjacency matrix into npz
-for i, sparse_matrix in enumerate(adj):
-    filename = f"sparse_matrix_{i+1}.npz"
-    sparse.save_npz(filename, sparse_matrix)
