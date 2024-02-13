@@ -21,7 +21,7 @@ cd Congestion-Prediction
 
 # Create and activate Conda environment
 conda env create -f environment.yml
-conda activate capstone
+conda activate DSC180-B07
 ```
 
 ### Conda Environment
