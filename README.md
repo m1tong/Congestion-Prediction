@@ -7,6 +7,7 @@ Welcome to the DSC180A Capstone Project: Graph ML for Chip Profiling. This repor
 
 1. [Installation](#installation)
 2. [Conda Environment](#conda-environment)
+3. [Links](#links)
 
 ### Installation
 
@@ -27,6 +28,9 @@ conda activate DSC180-B07
 ### Conda Environment
 Environment Name: DSC180-B07 <br>
 Environment File: environment.yml
+
+### Links
+Website: [Here] (https://m1tong.github.io/Capstone-Website/)
 
 
 
