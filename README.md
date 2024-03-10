@@ -30,7 +30,7 @@ Environment Name: DSC180-B07 <br>
 Environment File: environment.yml
 
 ### Links
-Website: [Here](https://m1tong.github.io/Capstone-Website/)
+Website: [Here](https://m1tong.github.io/DSC180-Website/)
 
 
 
