@@ -272,24 +272,4 @@ if __name__ == "__models__":
         print("Invalid input! Please enter 'gcn' or 'gat'.")
 
 
-# A sample of how to use the above code
-mask_setup(data)
-gcn_model = gcn_train(data)
-gcn_test_loss, GCN_out= gcn_eval(gcn_model, data)
-
-# An example of using the out to do error analyze
-# RMSE:
-GCN_rmse = mean_squared_error(data.y[data.test_mask].cpu().detach().numpy(), GCN_out[data.test_mask].cpu().detach().numpy(), squared=False)
-
-# You can also plot graphs:
-# plot the distribution of original congestion and predicted congestion
-plt.figure(figsize=(10, 5))
-sns.histplot(data.y[data.test_mask].cpu().detach().numpy(), kde=True, label='Ground Truth Congestion', stat="density", color='blue')
-sns.histplot(GCN_out[data.test_mask].cpu().detach().numpy().flatten(), kde=True, label='Predicted Congestion', stat="density", color='red')
-plt.xlabel('Congestion')
-plt.ylabel('Frequency')
-plt.title('GCN Preiction vs Ground Truth')
-plt.legend()
-plt.show()
-
 
