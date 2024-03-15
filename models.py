@@ -224,6 +224,52 @@ def gat_eval(GAT_model, data):
     print(f'GAT_Test Loss: {GAT_loss.item()}')
     return GAT_loss
 
+if __name__ == "__models__":
+    # Assuming 'data' is initialized somewhere in your code
+    
+    # Set up masks
+    mask_setup(data)
+    
+    # User choice: either 'gcn' or 'gat'
+    model_to_run = input("Enter 'gcn' to run GCN or 'gat' to run GAT: ").lower()
+    
+    if model_to_run == 'gcn':
+        gcn_model = gcn_train(data)
+        gcn_test_loss, GCN_out = gcn_eval(gcn_model, data)
+        
+        # Calculate RMSE for GCN
+        GCN_rmse = mean_squared_error(data.y[data.test_mask].cpu().detach().numpy(), GCN_out[data.test_mask].cpu().detach().numpy(), squared=False)
+        
+        # Plot the distribution of original congestion and predicted congestion for GCN
+        plt.figure(figsize=(10, 5))
+        sns.histplot(data.y[data.test_mask].cpu().detach().numpy(), kde=True, label='Ground Truth Congestion', stat="density", color='blue')
+        sns.histplot(GCN_out[data.test_mask].cpu().detach().numpy().flatten(), kde=True, label='Predicted Congestion', stat="density", color='red')
+        plt.xlabel('Congestion')
+        plt.ylabel('Frequency')
+        plt.title('GCN Prediction vs Ground Truth')
+        plt.legend()
+        plt.show()
+        
+    elif model_to_run == 'gat':
+        gat_model = gat_train(data)
+        gat_test_loss, GAT_out = gat_eval(gat_model, data)
+      
+                # Calculate RMSE for GCN
+        GAT_rmse = mean_squared_error(data.y[data.test_mask].cpu().detach().numpy(), GAT_out[data.test_mask].cpu().detach().numpy(), squared=False)
+        
+        # Plot the distribution of original congestion and predicted congestion for GCN
+        plt.figure(figsize=(10, 5))
+        sns.histplot(data.y[data.test_mask].cpu().detach().numpy(), kde=True, label='Ground Truth Congestion', stat="density", color='blue')
+        sns.histplot(GAT_out[data.test_mask].cpu().detach().numpy().flatten(), kde=True, label='Predicted Congestion', stat="density", color='red')
+        plt.xlabel('Congestion')
+        plt.ylabel('Frequency')
+        plt.title('GAT Prediction vs Ground Truth')
+        plt.legend()
+        plt.show()
+        # Plotting or further evaluation for GAT can be added here
+        
+    else:
+        print("Invalid input! Please enter 'gcn' or 'gat'.")
 
 
 # A sample of how to use the above code
