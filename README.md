@@ -33,8 +33,11 @@ Environment File: environment.yml
 ### Instructions
 1. cd to the folder that this model is in
 2. Run the line `python models.py`
-3. There will be a command line asking whether you want to run gat or gcn model
-4. Type in either `gcn` or `gat` then the model will start running
+```bash
+python models.py
+```
+4. There will be a command line asking whether you want to run gat or gcn model
+5. Type in either `gcn` or `gat` then the model will start running
 
 ### Links
 Website: [Here](https://m1tong.github.io/DSC180-Website/)
