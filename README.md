@@ -42,9 +42,6 @@ python models.py
 4. There will be a command line asking whether you want to run gat or gcn model
 5. Type in either `gcn` or `gat` then the model will start running
 
-### Links
-Website: [Here](https://m1tong.github.io/DSC180-Website/)
-
 
 
 
